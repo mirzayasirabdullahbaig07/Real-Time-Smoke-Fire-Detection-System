@@ -14,6 +14,10 @@ https://github.com/user-attachments/assets/27f18478-6ced-4087-9b68-d161c46659c9
 ---
 
 
+## 🚀 View Screenshot
+<img width="1888" height="810" alt="image" src="https://github.com/user-attachments/assets/7cb2d16a-12f0-4c28-9f6a-3aa64e001d94" />
+
+---
 ## 🚀 Features
 
 ### 🔥 Real-Time Fire & Smoke Detection
