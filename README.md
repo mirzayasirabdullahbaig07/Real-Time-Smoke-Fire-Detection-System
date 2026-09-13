@@ -8,6 +8,12 @@ The system also includes **low-light image enhancement, real-time performance co
 
 ---
 
+## 🚀 Video Demo
+https://github.com/user-attachments/assets/27f18478-6ced-4087-9b68-d161c46659c9
+
+---
+
+
 ## 🚀 Features
 
 ### 🔥 Real-Time Fire & Smoke Detection
