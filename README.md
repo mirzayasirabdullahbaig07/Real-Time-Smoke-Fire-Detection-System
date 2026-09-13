@@ -1,62 +1,362 @@
-# FIre-Detection
-Real-time Fire and smoke detection using yolov11n.pt
-# ⚙️ Real-Time Smoke & Fire Detection System
+# 🔥 Fire & Smoke Detection System
 
-An end-to-end Computer Vision system designed to detect fire and smoke in real time. Built with custom-trained **YOLO11** weights and a responsive **Streamlit** dashboard, the application handles image analysis, video file processing, continuous webcam streams, and automated emergency notification dispatch.
+A real-time **Fire and Smoke Detection System** powered by **YOLO11** and **Streamlit**.
 
-🚀 **Live Interactive Demo:** [fire-detection-gabr.streamlit.app](https://fire-detection-gabr.streamlit.app/)      
-    **Linkedin Post:** [Fire detection project post] (https://lnkd.in/p/eQQpQ-eu)
+This end-to-end Computer Vision application uses custom-trained YOLO11 weights to detect **fire** and **smoke** across multiple input sources, including images, videos, and live webcam streams.
 
----
-
-## 📌 Key Highlights
-
-* **Multi-Input Inference:** Seamlessly switch between static image inspection, video file batch processing, and live webcam feeds.
-* **H.264 Web-Compatible Video Processing:** Uses `imageio` with embedded FFmpeg encoding to write `.mp4` video files directly streamable inside modern web browsers.
-* **Automated SMTP Email Alerts:** Sends direct JPEG snapshot attachments via Gmail SMTP when fire/smoke is detected on live streams.
-* **Real-time Performance Optimization:** Includes dynamic resolution scaling ($320\text{px}$ to $640\text{px}$), frame-skipping controls, and CLAHE (Contrast Limited Adaptive Histogram Equalization) image enhancement for low-light environments.
+The system also includes **low-light image enhancement, real-time performance controls, browser-compatible video processing, and automated email alerts**.
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+## 🚀 Features
 
-| Layer | Component / Library | Purpose |
-| :--- | :--- | :--- |
-| **Model** | `ultralytics` (YOLO11) | Object detection for `fire` and `smoke` classes |
-| **Frontend** | `streamlit` | Interactive GUI, sidebar configuration, and media display |
-| **Vision & Image** | `opencv-python-headless`, `pillow`, `numpy` | Image decoding, color transformation, CLAHE preprocessing |
-| **Video Processing**| `imageio`, `imageio-ffmpeg` | Frame-by-frame annotation and H.264 MP4 export |
-| **Alert Systems** | `smtplib`, `email.mime` | Secure background email dispatch with image attachments |
+### 🔥 Real-Time Fire & Smoke Detection
 
----
+The system uses a custom-trained **YOLO11 model** to detect:
 
-## ✨ System Features & Interface
+- 🔥 Fire
+- 💨 Smoke
 
-### 📷 1. Image Detection
-Upload `.jpg`, `.jpeg`, or `.png` files to view side-by-side comparisons of the raw input and annotated bounding-box predictions.
-
-### 🎥 2. Video File Processing
-Upload pre-recorded media (`.mp4`, `.avi`, `.mov`, `.mkv`). The video is processed frame-by-frame with active progress indicators and rendered natively for browser playback upon completion.
-
-### 📹 3. Live Camera Feed & Automated Email Dispatch
-Run continuous webcam monitoring with dynamic frame skipping.
-> ⚠️ **Alert System Behavior:**
-> * When **Enable Automatic Email Alerts** is checked, detecting fire or smoke triggers an automated alert email.
-> * The alert includes a JPEG frame snapshot attached directly to the message.
-> * Alerts are dispatched to the primary target **`abdogabr688@gmail.com`** and any optional custom email address specified in the sidebar.
-> * Includes a **60-second cooldown timer** to prevent email spamming during continuous detection.
+Detection results include annotated bounding boxes and confidence scores.
 
 ---
 
-## 📁 Repository Architecture
+### 📷 Image Detection
+
+Upload an image and detect fire or smoke instantly.
+
+**Supported formats:**
+
+- `.jpg`
+- `.jpeg`
+- `.png`
+
+The application displays:
+
+- Original image
+- Detection results
+- Annotated bounding boxes
+- Confidence scores
+
+---
+
+### 🎥 Video Detection
+
+Upload a video and process it frame by frame using the YOLO11 detection model.
+
+**Supported formats:**
+
+- `.mp4`
+- `.avi`
+- `.mov`
+- `.mkv`
+
+Features include:
+
+- Frame-by-frame detection
+- Annotated detection results
+- Progress indicators
+- Processed video generation
+- Browser-compatible MP4 output
+
+The system uses `imageio` and `imageio-ffmpeg` to generate H.264-compatible videos that can be played directly in modern web browsers.
+
+---
+
+### 📹 Live Webcam Detection
+
+The application supports continuous real-time monitoring using a webcam.
+
+Features include:
+
+- Real-time fire detection
+- Real-time smoke detection
+- Live annotated frames
+- Frame-skipping controls
+- Adjustable inference resolution
+- Configurable confidence threshold
+
+---
+
+### 📧 Automated Email Alerts
+
+When fire or smoke is detected during a live camera stream, the system can automatically send an emergency email alert.
+
+The alert system:
+
+- Captures a detection snapshot
+- Converts the frame into a JPEG image
+- Attaches the image to the email
+- Sends automated alerts using Gmail SMTP
+- Supports an optional custom recipient email
+
+To prevent repeated notifications during continuous detection, the system includes a:
+
+> ⏱️ **60-second alert cooldown mechanism**
+
+This helps prevent unnecessary email flooding.
+
+> ⚠️ Sensitive information such as email credentials should always be stored securely using Streamlit Secrets or environment variables.
+
+---
+
+## 🌙 Low-Light Image Enhancement
+
+The system integrates **CLAHE (Contrast Limited Adaptive Histogram Equalization)** using OpenCV.
+
+CLAHE improves image contrast and can help enhance visibility in:
+
+- Low-light environments
+- Dim areas
+- Hazy scenes
+- Reduced visibility conditions
+
+This preprocessing step helps prepare images before model inference.
+
+---
+
+## ⚡ Performance Optimization
+
+The application provides configurable controls to balance detection accuracy and real-time performance.
+
+### Available Controls
+
+- **Inference Resolution:** 320px – 640px
+- **Frame Skipping**
+- **Confidence Threshold**
+- **CLAHE Low-Light Enhancement**
+
+These controls allow users to optimize the system depending on:
+
+- Hardware capabilities
+- Processing speed
+- Camera resolution
+- Real-time monitoring requirements
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technology | Purpose |
+|----------|------------|---------|
+| **Model** | YOLO11 / Ultralytics | Fire and smoke object detection |
+| **Frontend** | Streamlit | Interactive web application |
+| **Computer Vision** | OpenCV | Image and video processing |
+| **Image Processing** | Pillow, NumPy | Image manipulation |
+| **Video Processing** | ImageIO, ImageIO-FFmpeg | Video encoding and export |
+| **Email Alerts** | SMTP, Email MIME | Automated emergency notifications |
+| **Programming Language** | Python | Core application development |
+
+---
+
+## 📦 Dependencies
+
+Main dependencies include:
+
+```text
+ultralytics
+streamlit
+opencv-python-headless
+numpy
+pillow
+imageio
+imageio-ffmpeg
+```
+
+Install all required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 📁 Project Structure
 
 ```text
 Fire-Detection/
+│
 ├── .streamlit/
-│   └── secrets.toml          # Encrypted local SMTP credentials (git-ignored)
+│   └── secrets.toml          # SMTP credentials and sensitive configuration
+│
 ├── weights/
-│   └── best.pt               # Trained YOLO11 model weights file
-├── app.py                    # Main Streamlit web application & inference logic
-├── requirements.txt          # Python runtime dependencies for Streamlit Cloud
-├── .gitignore                # Excludes virtual environments and sensitive files
+│   └── best.pt               # Custom-trained YOLO11 model weights
+│
+├── app.py                    # Main Streamlit application and inference logic
+│
+├── requirements.txt          # Project dependencies
+│
+├── .gitignore                # Ignored files and sensitive configurations
+│
 └── README.md                 # Project documentation
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd Fire-Detection
+```
+
+### 3. Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### 4. Activate the Virtual Environment
+
+#### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+#### macOS / Linux
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Run the Application
+
+Start the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+The application will automatically open in your browser.
+
+---
+
+## 🔐 Email Configuration
+
+To enable automated email alerts, configure your SMTP credentials securely.
+
+Example `.streamlit/secrets.toml`:
+
+```toml
+EMAIL_SENDER = "your_email@gmail.com"
+EMAIL_PASSWORD = "your_app_password"
+```
+
+> ⚠️ Never upload your email password, app password, API keys, or other sensitive credentials to GitHub.
+
+Make sure the following file is included in `.gitignore`:
+
+```text
+.streamlit/secrets.toml
+```
+
+For Gmail, it is recommended to use an **App Password** instead of your primary account password.
+
+---
+
+## 🧠 System Workflow
+
+```text
+Input Source
+     │
+     ▼
+Image / Video / Webcam
+     │
+     ▼
+Preprocessing
+     │
+     ├── CLAHE Enhancement
+     │
+     ▼
+YOLO11 Inference
+     │
+     ▼
+Fire / Smoke Detection
+     │
+     ├── Bounding Boxes
+     ├── Confidence Scores
+     │
+     ▼
+Detection Result
+     │
+     ├── Display Results
+     ├── Save Processed Video
+     └── Send Email Alert
+```
+
+---
+
+## 🎯 Use Cases
+
+This system can potentially be adapted for:
+
+- 🏭 Industrial safety monitoring
+- 🏢 Building surveillance
+- 🏠 Smart home safety systems
+- 🌲 Forest fire monitoring
+- 🚗 Vehicle safety systems
+- 🏗️ Construction site monitoring
+- 🔥 Early fire detection research
+
+---
+
+## 🔮 Future Improvements
+
+Possible future improvements include:
+
+- Multi-camera monitoring
+- Cloud deployment
+- SMS alerts
+- WhatsApp notifications
+- IoT sensor integration
+- Fire severity estimation
+- Detection history dashboard
+- Database integration
+- Cloud storage for detection snapshots
+- Mobile application integration
+- Edge device optimization
+
+---
+
+## 🧠 Built With
+
+- Python
+- YOLO11
+- Ultralytics
+- Streamlit
+- OpenCV
+- NumPy
+- Pillow
+- ImageIO
+- SMTP
+
+---
+
+## 📄 License
+
+This project is intended for **educational and research purposes**.
+
+---
+
+## 👨‍💻 Author
+
+**Yasir Baig**  
+AI Engineer | Machine Learning | Computer Vision
+
+⭐ If you found this project useful, consider giving the repository a star!
